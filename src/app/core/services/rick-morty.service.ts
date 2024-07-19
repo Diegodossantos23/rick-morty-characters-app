@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { Character } from '../models/character.model';
@@ -21,7 +21,22 @@ export class RickMortyService {
     this.http.get<{ results: Character[] }>(this.apiUrl).pipe(
       tap(response => console.log('API response:', response)),
       map(response => response.results),
-      tap(characters => console.log('Characters found:', characters))
-    ).subscribe(characters => this.charactersSubject.next(characters));
+      tap(characters => this.charactersSubject.next(characters))
+    ).subscribe();
+  }
+
+  searchCharacters(queryParams: any): void {
+    let params = new HttpParams();
+    for (const key in queryParams) {
+      if (queryParams[key]) {
+        params = params.append(key, queryParams[key]);
+      }
+    }
+
+    this.http.get<{ results: Character[] }>(this.apiUrl, { params }).pipe(
+      tap(response => console.log('API response:', response)),
+      map(response => response.results),
+      tap(characters => this.charactersSubject.next(characters))
+    ).subscribe();
   }
 }

@@ -1,20 +1,26 @@
 .character-item {
-    border-radius: 8px; /* Raio de borda */
-    border: 1px solid transparent; /* Ajustar a borda */
+    border-radius: 8px; 
+    border: 1px solid transparent; 
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background-color: #fff; /* Cor de fundo branca */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra */
-    padding: 1rem; /* Espaçamento interno */
+    background-color: #fff; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
     width: 230px;
   }
   
   .character-item img {
     width: 100%;
     height: auto;
-    border-radius: 8px 8px 0 0; /* Ajuste de raio para as bordas superiores */
+    border-radius: 8px 8px 0 0;
+  }
+
+  .text-container {
+    height: 74px;
+    width: auto;
+    padding: 1rem;
+    gap: 0.5rem;
   }
   
   .character-item h2 {
