@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { Character } from '../models/character.model';
 import { environment } from '../../../environments/environment';
 
@@ -10,12 +10,18 @@ import { environment } from '../../../environments/environment';
 })
 export class RickMortyService {
   private apiUrl = `${environment.apiUrl}/character`;
+  private charactersSubject = new BehaviorSubject<Character[]>([]);
+  characters$ = this.charactersSubject.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    console.log('RickMortyService initialized');
+  }
 
-  getAllCharacters(): Observable<Character[]> {
-    return this.http.get<{ results: Character[] }>(this.apiUrl).pipe(
-      map(response => response.results)
-    );
+  getAllCharacters(): void {
+    this.http.get<{ results: Character[] }>(this.apiUrl).pipe(
+      tap(response => console.log('API response:', response)),
+      map(response => response.results),
+      tap(characters => console.log('Characters found:', characters))
+    ).subscribe(characters => this.charactersSubject.next(characters));
   }
 }
