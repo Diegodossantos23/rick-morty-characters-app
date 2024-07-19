@@ -1,0 +1,30 @@
+.character-item {
+    border-radius: 8px; /* Raio de borda */
+    border: 1px solid transparent; /* Ajustar a borda */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #fff; /* Cor de fundo branca */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Sombra */
+    padding: 1rem; /* Espaçamento interno */
+    width: 230px;
+  }
+  
+  .character-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0; /* Ajuste de raio para as bordas superiores */
+  }
+  
+  .character-item h2 {
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .character-item p {
+    margin: 0.5rem 0;
+    font-size: 0.875rem;
+  }
+  
