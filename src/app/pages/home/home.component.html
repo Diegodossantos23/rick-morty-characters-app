@@ -1,10 +1,8 @@
 <div class="home-container">
     <div class="search-container">
-        <h2>INICIO</h2>
-        <input type="text" (input)="onSearch($event, 'name')" placeholder="Search by name">
-        <input type="text" (input)="onSearch($event, 'status')" placeholder="Search by status">
-        <input type="text" (input)="onSearch($event, 'species')" placeholder="Search by species">
-        </div>
+        <h2 class="font-creepster-regular">HOME</h2>
+        <app-search (searchEvent)="onSearch($event)"></app-search>
+    </div>
     <app-characters-list [characters]="characters"></app-characters-list>
 </div>
   

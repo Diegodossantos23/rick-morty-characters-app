@@ -17,5 +17,6 @@ export interface Character {
     episode: string[];
     url: string;
     created: string;
+    isFavorite?: boolean;
   }
   

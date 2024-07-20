@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Character } from '../../core/models/character.model';
 
@@ -11,4 +11,9 @@ import { Character } from '../../core/models/character.model';
 })
 export class CharactersListItemComponent {
   @Input() character!: Character;
+  @Output() toggleFavorite = new EventEmitter<Character>();
+
+  onToggleFavorite(): void {
+    this.toggleFavorite.emit(this.character);
+  }
 }

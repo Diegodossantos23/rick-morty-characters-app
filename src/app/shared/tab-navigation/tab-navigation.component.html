@@ -1,0 +1,9 @@
+<div class="tabs">
+    <div class="tab" (click)="navigate('home')" [class.active]="isActive('home')">
+      <span class="icon">🏠</span> Home
+    </div>
+    <div class="tab" (click)="navigate('favorites')" [class.active]="isActive('favorites')">
+      <span class="icon">❤️</span> Favorites <span class="badge">{{ favoriteCount }}</span>
+    </div>
+  </div>
+  

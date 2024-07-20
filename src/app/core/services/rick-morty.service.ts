@@ -13,6 +13,9 @@ export class RickMortyService {
   private charactersSubject = new BehaviorSubject<Character[]>([]);
   characters$ = this.charactersSubject.asObservable();
 
+  private favoriteCharactersSubject = new BehaviorSubject<Character[]>([]);
+  favoriteCharacters$ = this.favoriteCharactersSubject.asObservable();
+
   constructor(private http: HttpClient) {
     console.log('RickMortyService initialized');
   }
@@ -28,9 +31,7 @@ export class RickMortyService {
   searchCharacters(queryParams: any): void {
     let params = new HttpParams();
     for (const key in queryParams) {
-      if (queryParams[key]) {
-        params = params.append(key, queryParams[key]);
-      }
+      if (queryParams[key]) params = params.append(key, queryParams[key]); 
     }
 
     this.http.get<{ results: Character[] }>(this.apiUrl, { params }).pipe(
@@ -38,5 +39,21 @@ export class RickMortyService {
       map(response => response.results),
       tap(characters => this.charactersSubject.next(characters))
     ).subscribe();
+  }
+
+  addFavorite(character: Character): void {
+    const favorites = this.favoriteCharactersSubject.value;
+    if (!favorites.find(c => c.id === character.id)) {
+      character.isFavorite = true;
+      this.favoriteCharactersSubject.next([...favorites, character]);
+      console.log("Added to favorites:", character);
+    }
+  }
+
+  removeFavorite(character: Character): void {
+    const favorites = this.favoriteCharactersSubject.value.filter(c => c.id !== character.id);
+    character.isFavorite = false;
+    this.favoriteCharactersSubject.next(favorites);
+    console.log("Removed from favorites:", character);
   }
 }

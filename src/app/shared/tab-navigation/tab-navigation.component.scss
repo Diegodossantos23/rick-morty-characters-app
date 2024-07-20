@@ -1,0 +1,45 @@
+.tabs {
+    display: flex;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    overflow: hidden;
+    width: 253px;
+    border: 2px solid #1e1e1e; ;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    color: white;
+    border-right: 1px solid #444;
+  }
+  
+  .tab:last-child {
+    border-right: none;
+  }
+  
+  .tab .icon {
+    margin-right: 8px;
+  }
+  
+  .tab .badge {
+    background-color: #f50057;
+    color: white;
+    border-radius: 12px;
+    padding: 2px 6px;
+    margin-left: 4px;
+  }
+  
+  .tab.active {
+    background-color: white;
+    color: black;
+  }
+  
+  .tab.active .icon {
+    color: black;
+  }
+  
+
+  
