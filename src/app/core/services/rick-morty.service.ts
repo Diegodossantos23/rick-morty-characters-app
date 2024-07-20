@@ -56,4 +56,10 @@ export class RickMortyService {
     this.favoriteCharactersSubject.next(favorites);
     console.log("Removed from favorites:", character);
   }
+
+  getFavoriteCount(): Observable<number> {
+    return this.favoriteCharacters$.pipe(
+      map(favorites => favorites.length)
+    );
+  }
 }

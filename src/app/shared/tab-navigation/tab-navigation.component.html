@@ -3,7 +3,7 @@
       <span class="icon">🏠</span> Home
     </div>
     <div class="tab" (click)="navigate('favorites')" [class.active]="isActive('favorites')">
-      <span class="icon">❤️</span> Favorites <span class="badge">{{ favoriteCount }}</span>
+      <span class="icon">❤️</span> Favorites <span class="badge">{{ favoriteCount$ | async }}</span>
     </div>
   </div>
   

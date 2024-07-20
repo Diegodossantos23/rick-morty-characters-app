@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { RickMortyService } from '../../core/services/rick-morty.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tab-navigation',
@@ -11,25 +12,17 @@ import { RickMortyService } from '../../core/services/rick-morty.service';
   styleUrls: ['./tab-navigation.component.scss']
 })
 export class TabNavigationComponent {
-  favoriteCount: number = 0;
+  favoriteCount$: Observable<number>;
 
-  constructor(private router: Router, private rickMortyService: RickMortyService) {}
-
-  ngOnInit(): void {
-   this.loadAllFavoriteCharacters()
+  constructor(private router: Router, private rickMortyService: RickMortyService) {
+    this.favoriteCount$ = this.rickMortyService.getFavoriteCount()
   }
 
-  loadAllFavoriteCharacters() {
-    this.rickMortyService.favoriteCharacters$.subscribe(favorites => {
-      this.favoriteCount = favorites.length;
-    });
-  }
-
-  navigate(route: string) {
+  navigate(route: string): void {
     this.router.navigate([route]);
   }
 
   isActive(route: string): boolean {
-    return this.router.url === `/${route}`;
+    return this.router.url.includes(route);
   }
 }
