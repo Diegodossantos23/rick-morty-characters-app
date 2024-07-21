@@ -1,34 +1,35 @@
-// src/app/pages/favorites/favorites.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Character } from '../../core/models/character.model';
 import { RickMortyService } from '../../core/services/rick-morty.service';
 import { CharactersListComponent } from '../../components/characters-list/characters-list.component';
 import { SearchComponent } from '../../shared/search/search.component';
+import { GenericFeedbackComponent } from '../../shared/generic-feedback/generic-feedback.component';
 
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.scss'],
   standalone: true,
-  imports: [CommonModule, CharactersListComponent, SearchComponent]
+  imports: [CommonModule, CharactersListComponent, SearchComponent, GenericFeedbackComponent]
 })
 export class FavoritesComponent implements OnInit {
   favoriteCharacters: Character[] = [];
   allFavoriteCharacters: Character[] = [];
-  isLoading = true;
+  showFeedback: Boolean = false;
+  isLoading: Boolean = true;
 
   constructor(private rickMortyService: RickMortyService) {}
 
   ngOnInit(): void {
     this.loadAllFavoriteCharacters();
-    this.rickMortyService.isLoading$.subscribe(isLoading => this.isLoading = isLoading);
   }
 
   loadAllFavoriteCharacters() {
     this.rickMortyService.favoriteCharacters$.subscribe((characters: Character[]) => {
       this.favoriteCharacters = characters;
       this.allFavoriteCharacters = characters;
+      this.showFeedback = characters.length === 0;
     });
   }
 
@@ -40,8 +41,10 @@ export class FavoritesComponent implements OnInit {
           return typeof value === 'string' && value.toLowerCase().includes(filters[key].toLowerCase());
         })
       );
+      this.showFeedback = this.favoriteCharacters.length === 0;
     } else {
       this.favoriteCharacters = [...this.allFavoriteCharacters];
+      this.showFeedback = this.favoriteCharacters.length === 0;
     }
   }
 }

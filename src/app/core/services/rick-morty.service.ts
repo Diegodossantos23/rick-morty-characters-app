@@ -1,7 +1,6 @@
-// src/app/core/services/rick-morty.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { Observable, BehaviorSubject, of } from 'rxjs';
 import { map, tap, catchError, finalize } from 'rxjs/operators';
 import { Character } from '../models/character.model';
 import { environment } from '../../../environments/environment';
@@ -17,46 +16,45 @@ export class RickMortyService {
   private favoriteCharactersSubject = new BehaviorSubject<Character[]>([]);
   favoriteCharacters$ = this.favoriteCharactersSubject.asObservable();
 
+  private errorSubject = new BehaviorSubject<string | null>(null);
+  error$ = this.errorSubject.asObservable();
+
   isLoading$ = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
   }
 
-  getAllCharacters(): void {
+  getAllCharacters(): Observable<Character[]> {
     this.isLoading$.next(true);
-    this.http.get<{ results: Character[] }>(this.apiUrl).pipe(
+    return this.http.get<{ results: Character[] }>(this.apiUrl).pipe(
       map(response => response.results),
       tap(characters => {
         this.syncFavorites(characters);
         this.charactersSubject.next(characters);
+        this.errorSubject.next(null);  
       }),
-      catchError(error => {
-        console.error(error);
-        return [];
-      }),
+      catchError(error => this.handleError(error)),
       finalize(() => this.isLoading$.next(false))
-    ).subscribe();
+    );
   }
 
-  searchCharacters(queryParams: any): void {
+  searchCharacters(queryParams: any): Observable<Character[]> {
     let params = new HttpParams();
     for (const key in queryParams) {
       if (queryParams[key]) params = params.append(key, queryParams[key]);
     }
 
     this.isLoading$.next(true);
-    this.http.get<{ results: Character[] }>(this.apiUrl, { params }).pipe(
+    return this.http.get<{ results: Character[] }>(this.apiUrl, { params }).pipe(
       map(response => response.results),
       tap(characters => {
         this.syncFavorites(characters);
         this.charactersSubject.next(characters);
+        this.errorSubject.next(null);  
       }),
-      catchError(error => {
-        console.error(error);
-        return [];
-      }),
+      catchError(error => this.handleError(error)),
       finalize(() => this.isLoading$.next(false))
-    ).subscribe();
+    );
   }
 
   addFavorite(character: Character): void {
@@ -86,5 +84,11 @@ export class RickMortyService {
     characters.forEach(character => {
       character.isFavorite = favoriteIds.includes(character.id);
     });
+  }
+
+  private handleError(error: HttpErrorResponse): Observable<Character[]> {
+    console.error('API error:', error);
+    this.errorSubject.next(error.message || 'An unknown error occurred');
+    return of([]);
   }
 }
