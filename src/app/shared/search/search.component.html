@@ -1,8 +1,7 @@
-<div class="search-container">
-    <div class="search-inputs">
-      <input type="text" (input)="onSearch($event, 'name')" placeholder="Search by name">
-      <input type="text" (input)="onSearch($event, 'status')" placeholder="Search by status">
-      <input type="text" (input)="onSearch($event, 'species')" placeholder="Search by species">
-    </div>
-</div>
+<div>
+    <input (input)="onSearch($event, 'name')" placeholder="Search by name" />
+    <input (input)="onSearch($event, 'status')" placeholder="Search by status" />
+    <input (input)="onSearch($event, 'species')" placeholder="Search by species" />
+    <button (click)="onSearch($event, 'all')">Search</button>
+  </div>
   

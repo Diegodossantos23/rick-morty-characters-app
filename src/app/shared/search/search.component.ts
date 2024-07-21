@@ -1,6 +1,10 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+interface SearchFilters {
+  [key: string]: string;
+}
+
 @Component({
   selector: 'app-search',
   standalone: true,
@@ -9,9 +13,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
-  filters: { [key: string]: string } = {};
+  filters: SearchFilters = {};
 
-  @Output() searchEvent = new EventEmitter<{ [key: string]: string }>();
+  @Output() searchEvent = new EventEmitter<SearchFilters>();
 
   onSearch(event: Event, filterType: string): void {
     const inputElement = event.target as HTMLInputElement;

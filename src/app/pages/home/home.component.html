@@ -1,15 +1,14 @@
 <div class="home-container">
     <div class="search-container">
       <h2 class="font-creepster-regular">HOME</h2>
-      <app-search (searchEvent)="onSearch($event, currentPage)"></app-search>
+      <app-search (searchEvent)="onSearch($event)"></app-search>
     </div>
   
     <app-characters-list [characters]="characters"></app-characters-list>
   
     <app-generic-feedback
-      *ngIf="characters.length === 0 && !isLoading"
-      title="Nada foi encontrado"
-      message="Tente realizar uma nova busca.">
+      *ngIf="showFeedback"
+      [config]="feedbackConfig">
     </app-generic-feedback>
   
     <app-pagination 

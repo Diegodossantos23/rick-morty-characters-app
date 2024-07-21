@@ -7,12 +7,14 @@
     <app-characters-list [characters]="favoriteCharacters"></app-characters-list>
   
     <app-generic-feedback
-      *ngIf="favoriteCharacters.length === 0"
-      title="Parece que você ainda não tem favoritos"
-      message="Volte à página inicial e escolha os melhores para você"
-      [showButton]="true"
-      buttonRoute="/home"
-      buttonText="Voltar ao início">
+      *ngIf="showFeedback"
+      [config]="{
+        title: 'Parece que você ainda não tem favoritos',
+        message: 'Volte à página inicial e escolha os melhores para você',
+        showButton: true,
+        buttonRoute: '/home',
+        buttonText: 'Voltar ao início'
+      }">
     </app-generic-feedback>
   </div>
   

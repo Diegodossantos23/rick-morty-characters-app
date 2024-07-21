@@ -1,3 +1,4 @@
+// src/app/core/services/rick-morty.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject, of } from 'rxjs';
@@ -20,24 +21,24 @@ export class RickMortyService {
   error$ = this.errorSubject.asObservable();
 
   isLoading$ = new BehaviorSubject<boolean>(false);
-  totalPages = 1;  
+  private totalPagesSubject = new BehaviorSubject<number>(1);
+  totalPages$ = this.totalPagesSubject.asObservable();
 
   constructor(private http: HttpClient) {
   }
 
   getAllCharacters(page: number = 1): Observable<Character[]> {
     this.isLoading$.next(true);
-    let params = new HttpParams().set('page', page.toString());
-
-    return this.http.get<{ results: Character[], info: { count: number, pages: number } }>(this.apiUrl, { params }).pipe(
+    const params = new HttpParams().set('page', page.toString());
+    return this.http.get<{ results: Character[], info: { pages: number } }>(this.apiUrl, { params }).pipe(
       map(response => {
-        this.totalPages = response.info.pages;  
+        this.totalPagesSubject.next(response.info.pages);
         return response.results;
       }),
       tap(characters => {
         this.syncFavorites(characters);
         this.charactersSubject.next(characters);
-        this.errorSubject.next(null);  
+        this.errorSubject.next(null);
       }),
       catchError(error => this.handleError(error)),
       finalize(() => this.isLoading$.next(false))
@@ -45,21 +46,22 @@ export class RickMortyService {
   }
 
   searchCharacters(queryParams: any, page: number = 1): Observable<Character[]> {
-    let params = new HttpParams().set('page', page.toString());
+    let params = new HttpParams();
     for (const key in queryParams) {
       if (queryParams[key]) params = params.append(key, queryParams[key]);
     }
+    params = params.append('page', page.toString());
 
     this.isLoading$.next(true);
-    return this.http.get<{ results: Character[], info: { count: number, pages: number } }>(this.apiUrl, { params }).pipe(
+    return this.http.get<{ results: Character[], info: { pages: number } }>(this.apiUrl, { params }).pipe(
       map(response => {
-        this.totalPages = response.info.pages;
+        this.totalPagesSubject.next(response.info.pages);
         return response.results;
       }),
       tap(characters => {
         this.syncFavorites(characters);
         this.charactersSubject.next(characters);
-        this.errorSubject.next(null);  
+        this.errorSubject.next(null);
       }),
       catchError(error => this.handleError(error)),
       finalize(() => this.isLoading$.next(false))

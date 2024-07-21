@@ -2,6 +2,13 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+export interface GenericFeedbackConfig {
+  title: string;
+  message: string;
+  showButton?: boolean;
+  buttonRoute?: string;
+  buttonText?: string;
+}
 @Component({
   selector: 'app-generic-feedback',
   templateUrl: './generic-feedback.component.html',
@@ -10,9 +17,5 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule]
 })
 export class GenericFeedbackComponent {
-  @Input() title!: string;
-  @Input() message!: string;
-  @Input() showButton = false;
-  @Input() buttonRoute = '';
-  @Input() buttonText = 'Voltar';
+  @Input() config!: GenericFeedbackConfig;
 }
