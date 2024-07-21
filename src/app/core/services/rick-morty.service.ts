@@ -20,13 +20,11 @@ export class RickMortyService {
   isLoading$ = new BehaviorSubject<boolean>(false);
 
   constructor(private http: HttpClient) {
-    console.log('RickMortyService initialized');
   }
 
-  getAllCharacters(): Observable<Character[]> {
+  getAllCharacters(): void {
     this.isLoading$.next(true);
-    return this.http.get<{ results: Character[] }>(this.apiUrl).pipe(
-      tap(response => console.log('API response:', response)),
+    this.http.get<{ results: Character[] }>(this.apiUrl).pipe(
       map(response => response.results),
       tap(characters => {
         this.syncFavorites(characters);
@@ -37,18 +35,17 @@ export class RickMortyService {
         return [];
       }),
       finalize(() => this.isLoading$.next(false))
-    );
+    ).subscribe();
   }
 
-  searchCharacters(queryParams: any): Observable<Character[]> {
+  searchCharacters(queryParams: any): void {
     let params = new HttpParams();
     for (const key in queryParams) {
       if (queryParams[key]) params = params.append(key, queryParams[key]);
     }
 
     this.isLoading$.next(true);
-    return this.http.get<{ results: Character[] }>(this.apiUrl, { params }).pipe(
-      tap(response => console.log('API response:', response)),
+    this.http.get<{ results: Character[] }>(this.apiUrl, { params }).pipe(
       map(response => response.results),
       tap(characters => {
         this.syncFavorites(characters);
@@ -59,7 +56,7 @@ export class RickMortyService {
         return [];
       }),
       finalize(() => this.isLoading$.next(false))
-    );
+    ).subscribe();
   }
 
   addFavorite(character: Character): void {

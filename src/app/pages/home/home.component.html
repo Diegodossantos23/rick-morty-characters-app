@@ -1,8 +1,16 @@
+<!-- src/app/pages/home/home.component.html -->
 <div class="home-container">
     <div class="search-container">
-        <h2 class="font-creepster-regular">HOME</h2>
-        <app-search (searchEvent)="onSearch($event)"></app-search>
+      <h2 class="font-creepster-regular">HOME</h2>
+      <app-search (searchEvent)="onSearch($event)"></app-search>
     </div>
-    <app-characters-list [characters]="characters"></app-characters-list>
-</div>
+  
+    <app-characters-list [characters]="characters" [isLoading]="isLoading"></app-characters-list>
+  
+      <!--<app-generic-feedback
+      *ngIf="characters.length === 0 && !isLoading"
+      title="Nada foi encontrado"
+      message="Tente realizar uma nova busca.">
+    </app-generic-feedback> -->
+  </div>
   

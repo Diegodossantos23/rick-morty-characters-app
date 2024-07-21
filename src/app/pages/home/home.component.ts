@@ -11,30 +11,28 @@ import { SearchComponent } from '../../shared/search/search.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   standalone: true,
-  imports: [CommonModule, CharactersListComponent, SearchComponent, ]
+  imports: [CommonModule, CharactersListComponent, SearchComponent]
 })
 export class HomeComponent implements OnInit {
   characters: Character[] = [];
-
+  isLoading = true;
 
   constructor(private rickMortyService: RickMortyService) {}
 
   ngOnInit(): void {
-    this.loadAllCharacters();
     this.rickMortyService.characters$.subscribe((characters: Character[]) => {
       this.characters = characters;
     });
+    this.rickMortyService.isLoading$.subscribe(isLoading => this.isLoading = isLoading);
+    this.loadAllCharacters();
   }
 
   loadAllCharacters(): void {
-    this.rickMortyService.getAllCharacters().subscribe();
+    this.rickMortyService.getAllCharacters();
   }
 
   onSearch(filters: { [key: string]: string }): void {
-    if (Object.keys(filters).length > 0) {
-      this.rickMortyService.searchCharacters(filters).subscribe();
-    } else {
-      this.loadAllCharacters();
-    }
+    if (Object.keys(filters).length > 0) this.rickMortyService.searchCharacters(filters);
+    else this.loadAllCharacters();
   }
 }

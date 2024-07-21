@@ -11,23 +11,26 @@ import { SearchComponent } from '../../shared/search/search.component';
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.scss'],
   standalone: true,
-  imports: [CommonModule, CharactersListComponent, SearchComponent, ]
+  imports: [CommonModule, CharactersListComponent, SearchComponent]
 })
 export class FavoritesComponent implements OnInit {
   favoriteCharacters: Character[] = [];
   allFavoriteCharacters: Character[] = [];
+  isLoading = true;
 
   constructor(private rickMortyService: RickMortyService) {}
 
   ngOnInit(): void {
     this.loadAllFavoriteCharacters();
+    this.rickMortyService.isLoading$.subscribe(isLoading => this.isLoading = isLoading);
   }
 
   loadAllFavoriteCharacters() {
     this.rickMortyService.favoriteCharacters$.subscribe((characters: Character[]) => {
       this.favoriteCharacters = characters;
       this.allFavoriteCharacters = characters;
-    });  }
+    });
+  }
 
   onSearch(filters: { [key: string]: string }): void {
     if (Object.keys(filters).length > 0) {
@@ -37,7 +40,7 @@ export class FavoritesComponent implements OnInit {
           return typeof value === 'string' && value.toLowerCase().includes(filters[key].toLowerCase());
         })
       );
-   } else {
+    } else {
       this.favoriteCharacters = [...this.allFavoriteCharacters];
     }
   }
