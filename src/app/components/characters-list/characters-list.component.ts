@@ -19,5 +19,7 @@ export class CharactersListComponent {
   toggleFavorite(character: Character): void {
     if (character.isFavorite) this.rickMortyService.removeFavorite(character);
     else this.rickMortyService.addFavorite(character);
+    console.log("characters", this.characters);
+    
   }
 }

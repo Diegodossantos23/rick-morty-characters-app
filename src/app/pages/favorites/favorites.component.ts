@@ -1,3 +1,4 @@
+// src/app/pages/favorites/favorites.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Character } from '../../core/models/character.model';
@@ -10,7 +11,7 @@ import { SearchComponent } from '../../shared/search/search.component';
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.scss'],
   standalone: true,
-  imports: [CommonModule, CharactersListComponent, SearchComponent]
+  imports: [CommonModule, CharactersListComponent, SearchComponent, ]
 })
 export class FavoritesComponent implements OnInit {
   favoriteCharacters: Character[] = [];
@@ -26,9 +27,7 @@ export class FavoritesComponent implements OnInit {
     this.rickMortyService.favoriteCharacters$.subscribe((characters: Character[]) => {
       this.favoriteCharacters = characters;
       this.allFavoriteCharacters = characters;
-      console.log("favorite characters listed", this.favoriteCharacters);
-    });
-  }
+    });  }
 
   onSearch(filters: { [key: string]: string }): void {
     if (Object.keys(filters).length > 0) {
@@ -38,7 +37,7 @@ export class FavoritesComponent implements OnInit {
           return typeof value === 'string' && value.toLowerCase().includes(filters[key].toLowerCase());
         })
       );
-    } else {
+   } else {
       this.favoriteCharacters = [...this.allFavoriteCharacters];
     }
   }

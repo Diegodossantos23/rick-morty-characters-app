@@ -14,6 +14,8 @@ export class CharactersListItemComponent {
   @Output() toggleFavorite = new EventEmitter<Character>();
 
   onToggleFavorite(): void {
+    
     this.toggleFavorite.emit(this.character);
+    console.log("toggleFavorite", this.toggleFavorite);
   }
 }
