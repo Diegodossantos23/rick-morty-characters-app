@@ -20,14 +20,20 @@ export class RickMortyService {
   error$ = this.errorSubject.asObservable();
 
   isLoading$ = new BehaviorSubject<boolean>(false);
+  totalPages = 1;  
 
   constructor(private http: HttpClient) {
   }
 
-  getAllCharacters(): Observable<Character[]> {
+  getAllCharacters(page: number = 1): Observable<Character[]> {
     this.isLoading$.next(true);
-    return this.http.get<{ results: Character[] }>(this.apiUrl).pipe(
-      map(response => response.results),
+    let params = new HttpParams().set('page', page.toString());
+
+    return this.http.get<{ results: Character[], info: { count: number, pages: number } }>(this.apiUrl, { params }).pipe(
+      map(response => {
+        this.totalPages = response.info.pages;  
+        return response.results;
+      }),
       tap(characters => {
         this.syncFavorites(characters);
         this.charactersSubject.next(characters);
@@ -38,15 +44,18 @@ export class RickMortyService {
     );
   }
 
-  searchCharacters(queryParams: any): Observable<Character[]> {
-    let params = new HttpParams();
+  searchCharacters(queryParams: any, page: number = 1): Observable<Character[]> {
+    let params = new HttpParams().set('page', page.toString());
     for (const key in queryParams) {
       if (queryParams[key]) params = params.append(key, queryParams[key]);
     }
 
     this.isLoading$.next(true);
-    return this.http.get<{ results: Character[] }>(this.apiUrl, { params }).pipe(
-      map(response => response.results),
+    return this.http.get<{ results: Character[], info: { count: number, pages: number } }>(this.apiUrl, { params }).pipe(
+      map(response => {
+        this.totalPages = response.info.pages;
+        return response.results;
+      }),
       tap(characters => {
         this.syncFavorites(characters);
         this.charactersSubject.next(characters);
