@@ -1,0 +1,7 @@
+<div *ngIf="character; else loading">
+    <app-character-info [character]="character"></app-character-info>
+  </div>
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>
+  

@@ -21,8 +21,12 @@ export class RickMortyService {
   error$ = this.errorSubject.asObservable();
 
   isLoading$ = new BehaviorSubject<boolean>(false);
+  
   private totalPagesSubject = new BehaviorSubject<number>(1);
   totalPages$ = this.totalPagesSubject.asObservable();
+
+  private characterDetailsSubject = new BehaviorSubject<Character | null>(null);
+  characterDetails$ = this.characterDetailsSubject.asObservable();
 
   constructor(private http: HttpClient) {
   }
@@ -36,6 +40,8 @@ export class RickMortyService {
         return response.results;
       }),
       tap(characters => {
+        console.log("api response", characters);
+        
         this.syncFavorites(characters);
         this.charactersSubject.next(characters);
         this.errorSubject.next(null);
@@ -102,4 +108,21 @@ export class RickMortyService {
     this.errorSubject.next(error.message || 'An unknown error occurred');
     return of([]);
   }
+
+  getCharacterDetails(id: string): Observable<Character> {
+    this.isLoading$.next(true);
+    return this.http.get<Character>(`${this.apiUrl}/${id}`).pipe(
+      tap(character => {
+        this.characterDetailsSubject.next(character);
+        this.isLoading$.next(false);
+      }),
+      catchError(error => {
+        this.handleError(error);
+        this.isLoading$.next(false);
+        return of({} as Character); 
+      })
+    );
+  }
 }
+  
+
