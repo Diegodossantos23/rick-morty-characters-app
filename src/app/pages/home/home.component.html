@@ -1,9 +1,9 @@
 <div class="home-container">
     <div class="search-container">
       <h2 class="font-creepster-regular">HOME</h2>
-      <app-search (searchEvent)="onSearch($event)"></app-search>
     </div>
-  
+    
+    <app-search (searchEvent)="onSearch($event)"></app-search>
     <app-characters-list [characters]="characters"></app-characters-list>
   
     <app-generic-feedback

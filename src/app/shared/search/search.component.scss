@@ -1,7 +1,12 @@
-.search-inputs {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+.search-container {
+    display: grid;
+    grid-template-columns: repeat(4, 0fr); 
+    gap: 5rem;
+    width: 100%; 
+    height: auto;
+    opacity: 1;
+}
+
+input, select {
+    width: 230px;
 }
