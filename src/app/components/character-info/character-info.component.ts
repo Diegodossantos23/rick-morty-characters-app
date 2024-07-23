@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CharacterDetails } from '../../core/models/character.model';
+import { Character } from '../../core/models/character.model';
 
 @Component({
   selector: 'app-character-info',
@@ -10,5 +10,5 @@ import { CharacterDetails } from '../../core/models/character.model';
   imports: [CommonModule]
 })
 export class CharacterInfoComponent {
-  @Input() character!: CharacterDetails;
+  @Input() character!: Character;
 }

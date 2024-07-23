@@ -1,11 +1,35 @@
-<div class="character-info-card">
-    <h3>{{ character.name }}</h3>
-    <img [src]="character.image" [alt]="character.name">
-    <p><strong>Status:</strong> {{ character.status }}</p>
-    <p><strong>Species:</strong> {{ character.species }}</p>
-    <p><strong>Type:</strong> {{ character.type }}</p>
-    <p><strong>Gender:</strong> {{ character.gender }}</p>
-    <p><strong>Origin:</strong> {{ character.origin.name }}</p>
-    <p><strong>Location:</strong> {{ character.location.name }}</p>
+
+<div class="character-info-contaier">
+
+  <div class="character-info-card">
+
+    <div class="name-image">
+      <h3>{{ character.name }}</h3>
+      <img [src]="character.image" [alt]="character.name">
+    </div>
+
+      <div class="box">
+        <div class="status-alive-box">
+          <p><strong>Status:</strong></p>
+          <p>{{ character.status }}</p>
+        </div>
+        <div class="species-box">
+          <p><strong>Species:</strong></p>
+          <p>{{ character.species }}</p>
+        </div>
+        <div class="gender-box">
+          <p><strong>Gender:</strong></p>
+          <p>{{ character.gender }}</p>
+        </div>
+      </div>
+
+      <p *ngIf="character.type"><strong>Type:</strong> {{ character.type  }}</p>
+      <div class="origin-rectangle">
+        <p><strong>Origin:</strong> {{ character.origin.name }}</p>
+      </div>
+      <div class="location-rectangle">
+        <p><strong>Location:</strong> {{ character.location.name }}</p>
+      </div>
   </div>
+</div>
   
