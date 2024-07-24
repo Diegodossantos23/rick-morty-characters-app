@@ -6,19 +6,30 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 
 Aplicação Angular que interage com a [Rick and Morty API](https://rickandmortyapi.com) para permitir aos usuários buscar, visualizar e gerenciar personagens da série "Rick and Morty". A aplicação inclui funcionalidades como busca de personagens, visualização de detalhes, e a habilidade de adicionar personagens aos favoritos.
 
-## Funcionalidades Implementadas
 
-- **Busca de Personagens**: Usuários podem buscar personagens pelo nome.
-- **Visualização de Detalhes**: Exibe informações detalhadas dos personagens, incluindo status, espécie, gênero e origem.
-- **Gestão de Favoritos**: Usuários podem adicionar e remover personagens de uma lista de favoritos.
-- **Design Responsivo**: A aplicação é totalmente responsiva, garantindo boa usabilidade em dispositivos móveis e desktops.
+## Requisitos e Diferenciais Atendidos
 
-## Funcionalidades Adicionais
+Os seguintes requisitos e diferenciais foram implementados:
 
-- **Detalhes do persoangem**: Implementação para ver detalhes adicionais como episódios e localizações.
-- **Carregamento Lazy de Módulos**: Implementação de carregamento lazyloading para módulos de páginas, melhorando o desempenho.
-- **Uso de RxJS**: Para eficiência na busca e minimização das chamadas à API.
-- **Estilos Personalizados**: Layout responsivo para variados tamanhos de tela com scss
+### Requisitos
+
+- Seguir o protótipo indicado. ✅
+- Buscar um personagem pelo nome. ✅
+- Exibir informações mínimas sobre os personagens caso existam. ✅
+- Registrar o personagem na lista de favoritos utilizando Subjects do RxJS. ✅
+- O contador no topo da página é atualizado dinamicamente em tempo real. ✅
+- Visualizar a lista de personagens favoritos. ✅
+- Remover o personagem da lista de favoritos.✅
+
+### Diferenciais
+
+- Busca por nome utilizando operadores do RxJS para maior eficiência. ✅
+- Utilização do pipe async no contador de favoritos no header. ✅
+- Fonte personalizada adicionada ao projeto. ✅
+- Otimização do uso de diretivas estruturais. ✅
+- Carregamento lazy dos módulos das páginas. ✅
+- Layout responsivo. ✅
+- Além disso é possível ver os detalhes de um personagem.
 
 ## Tecnologias Utilizadas
 
@@ -26,7 +37,7 @@ Aplicação Angular que interage com a [Rick and Morty API](https://rickandmorty
 - **TypeScript**
 - **Angular Material**
 - **RxJS**
-- **Scss**
+- **SCSS**
 
 ## Instruções de Instalação e Execução
 
