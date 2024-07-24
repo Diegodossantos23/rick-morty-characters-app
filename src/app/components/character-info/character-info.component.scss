@@ -3,6 +3,7 @@
 .character-info-container {
   display: flex;
   flex-direction: row;
+  
 
   @media (max-width: $breakpoint-sm) {
     flex-direction: column;
@@ -18,6 +19,7 @@
   @include border-radius(0.5rem);
   background-color: $color-core-background;
   flex: 1;
+  
 
   .details-header {
     display: flex;
@@ -28,7 +30,10 @@
     @include border-radius(0.5rem);
     @include box-shadow(rgba(0, 0, 0, 0.05) 0px 6px 24px);
     background-color: $color-core-foreground;
-
+    background-image: url('/assets/gif/stars.jpeg'); 
+    background-size: cover; 
+    background-position: center;
+    
     h2 {
       @include title-style;
       font-size: 1.5rem;
@@ -49,6 +54,7 @@
     display: flex;
     justify-content: space-around;
     gap: $spacing-unit;
+    
   }
 
   .detail-item,
@@ -62,6 +68,9 @@
     @include border-radius(0.5rem);
     @include box-shadow(rgba(0, 0, 0, 0.05) 0px 6px 24px);
     background-color: $color-core-foreground;
+    background-image: url('/assets/gif/stars.jpeg'); 
+    background-size: cover; 
+    background-position: center;
 
     h3 {
       @include title-style;
@@ -94,7 +103,10 @@
     background-color: $color-core-foreground;
     align-self: start;
     flex: 1;
-
+    background-image: url('/assets/gif/stars.jpeg'); 
+    background-size: cover; 
+    background-position: center;
+    
     h4 {
       @include title-style;
     }

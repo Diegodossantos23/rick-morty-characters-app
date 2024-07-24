@@ -19,6 +19,7 @@
   &:hover {
     transform: translateY(-5px);
     @include box-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    border: 2px solid $skyline-blue-color;
   }
 
   img {
@@ -37,13 +38,17 @@
   padding: 1rem; 
   box-sizing: border-box; 
   height: auto; 
-
+  background-image: url('/assets/gif/stars.jpeg'); 
+    background-size: cover; 
+    background-position: center;
+    border-radius: 8px; 
   .main-info {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: start;
     gap: 0.3rem;
+  
 
     h3 {
       @include font-creepster;
@@ -82,4 +87,6 @@
     outline: 2px solid $lime-green-color;
     outline-offset: 2px;
   }
+
+
 }

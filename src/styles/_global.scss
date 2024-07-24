@@ -41,6 +41,7 @@ a {
   @include border-radius(4px);
   margin: 1rem auto;
   max-width: 1200px;
+  height: auto;
 }
 
 .section {
