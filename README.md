@@ -13,23 +13,23 @@ Os seguintes requisitos e diferenciais foram implementados:
 
 ### Requisitos
 
-- Seguir o protótipo indicado.
-- Buscar um personagem pelo nome.
-- Exibir informações mínimas sobre os personagens caso existam.
-- Registrar o personagem na lista de favoritos utilizando Subjects do RxJS.
-- O contador no topo da página é atualizado dinamicamente em tempo real.
-- Visualizar a lista de personagens favoritos.
-- Remover o personagem da lista de favoritos.
+- Seguir o protótipo indicado. ✅
+- Buscar um personagem pelo nome. ✅
+- Exibir informações mínimas sobre os personagens caso existam. ✅
+- Registrar o personagem na lista de favoritos utilizando Subjects do RxJS. ✅
+- O contador no topo da página é atualizado dinamicamente em tempo real. ✅
+- Visualizar a lista de personagens favoritos. ✅
+- Remover o personagem da lista de favoritos.✅
 
 ### Diferenciais
 
-- Busca por nome utilizando operadores do RxJS para maior eficiência.
-- Utilização do pipe async no contador de favoritos no header.
-- Fonte personalizada adicionada ao projeto.
-- Otimização do uso de diretivas estruturais.
-- Carregamento lazy dos módulos das páginas.
-- Layout responsivo.
-- Funcionalidades adicionais criativas incluídas além dos requisitos.
+- Busca por nome utilizando operadores do RxJS para maior eficiência. ✅
+- Utilização do pipe async no contador de favoritos no header. ✅
+- Fonte personalizada adicionada ao projeto. ✅
+- Otimização do uso de diretivas estruturais. ✅
+- Carregamento lazy dos módulos das páginas. ✅
+- Layout responsivo. ✅
+- Além disso é possíovel ver os detalhes de um personagem.
 
 ## Tecnologias Utilizadas
 
