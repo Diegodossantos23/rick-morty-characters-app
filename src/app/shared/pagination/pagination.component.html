@@ -1,4 +1,4 @@
-<nav class="pagination" aria-label="Pagination"   *ngIf="totalPages > 1"  >
+<nav class="pagination" aria-label="Pagination"  *ngIf="totalPages > 1"  >
   <button 
     (click)="changePage(currentPage - 1)" 
     [attr.aria-disabled]="currentPage === 1 ? 'true' : 'false'"

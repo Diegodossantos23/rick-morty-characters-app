@@ -16,7 +16,6 @@ import { CommonModule } from '@angular/common';
       justify-content: center;
       align-items: center;
       width: 100%;
-      height: 100vh;
       opacity: 1;
     }
 
