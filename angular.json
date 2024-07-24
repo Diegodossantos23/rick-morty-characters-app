@@ -31,11 +31,15 @@
                 "input": "src/assets",
                 "output": "/assets"
               },
-              "src/favicon.ico"
+              {
+                "glob": "favicon.ico",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
-              "src/styles/styles.scss" 
+              "src/styles/styles.scss"
             ],
             "scripts": []
           },
@@ -105,11 +109,15 @@
                 "input": "src/assets",
                 "output": "/assets"
               },
-              "src/favicon.ico"
+              {
+                "glob": "favicon.ico",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "@angular/material/prebuilt-themes/azure-blue.css",
-              "src/styles/styles.scss" 
+              "src/styles/styles.scss"
             ],
             "scripts": []
           }

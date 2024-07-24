@@ -3,18 +3,29 @@
 .header-container {
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
   width: 100%;
-  height: 64px;
+  height: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   background-color: $color-core-foreground;
   box-sizing: border-box;
+  flex-wrap: wrap;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    align-items: center;
+  }
 
   .logo {
     width: 114px;
     height: 64px;
     gap: 0px;
+
+    @media (max-width: $breakpoint-md) {
+      width: 150px;
+      height: auto;
+    }
   }
 
   nav {
@@ -22,5 +33,17 @@
     align-items: center;
     width: auto;
     justify-content: flex-end;
+
+    @media (max-width: $breakpoint-md) {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
   }
 }

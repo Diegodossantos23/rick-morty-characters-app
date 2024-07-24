@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
+    color: $text-white-color;
     border-right: 1px solid #444;
     background: none;
     border: none;
@@ -26,11 +26,11 @@
     }
 
     &.active {
-      background-color: white;
-      color: black;
+      background-color: $text-white-color;
+      color: $color-core-foreground;
 
       .icon {
-        color: black;
+        color: $color-core-foreground;
       }
     }
 
@@ -40,11 +40,28 @@
     }
 
     .badge {
-      background-color: #05F29B;
-      color: $text-color;
+      background-color: $mint-green-color;
+      color: $dark-gray-color;
       border-radius: 12px;
       padding: 3px 6px;
       margin-left: 4px;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    align-items: stretch;
+
+    .tab {
+      width: 100%;
+      padding: 10px;
+
+      .icon {
+        font-size: 1.2rem;
+      }
+
+      .badge {
+        font-size: 0.8rem;
+      }
     }
   }
 }

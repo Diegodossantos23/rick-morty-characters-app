@@ -1,0 +1,24 @@
+button {
+    background-color: $skyline-blue-color;
+    color: $text-white-color;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    @include border-radius(4px);
+    font-size: 1rem;
+    @include transition(background-color 0.3s, transform 0.2s);
+  
+    &:hover:not(:disabled) {
+      background-color: lighten($skyline-blue-color, 10%);
+    }
+  
+    &:disabled {
+      background-color: $lime-green-color;
+      cursor: not-allowed;
+    }
+  
+    &:focus {
+      outline: 2px solid $skyline-blue-color;
+      outline-offset: 2px;
+    }
+}

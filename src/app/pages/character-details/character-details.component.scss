@@ -8,19 +8,19 @@
   align-items: center;
   padding: 1rem;
 
+  @media (max-width: $breakpoint-sm) {
+  flex-direction: column;
+  }
+
   .details-header {
     width: 100%;
       h2 {
-        @include title-style;
-        font-size: 3rem;
+        @include creepster-title-style;
+        text-align: left;
+      }
+
+      @media (max-width: $breakpoint-sm) {
         text-align: center;
       }
-  }
-
-  .character-info-container {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
   }
 }

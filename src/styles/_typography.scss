@@ -1,0 +1,44 @@
+@import '_variables';
+@import '_colors';
+
+@mixin font-creepster {
+  font-family: $font-creepster;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin font-poppins {
+  font-family: $font-family-base;
+  font-weight: 400;
+}
+
+@mixin creepster-title-style {
+  @include font-creepster;
+  color: $skyline-blue-color;
+  font-size: 4rem;
+  text-shadow:
+    4px 0 0 #bfde42,
+    0 4px 0 #bfde42,
+    4px 4px 0 #bfde42,
+    4px -4px 0 #bfde42,
+    -4px 4px 0 #bfde42,
+    -4px -4px 0 #bfde42;
+  letter-spacing: .2rem;
+  -webkit-text-stroke: 2px #193840;
+
+  &.smaller{
+    font-size: 3rem;
+  }
+}
+
+@mixin title-style {
+  @include font-creepster;
+  font-size: 1.5rem;
+  color:$text-white-color;
+}
+
+@mixin paragraph-style {
+  @include font-poppins;
+  font-size: 1rem;
+  color:$grayish-white-text-color;
+}

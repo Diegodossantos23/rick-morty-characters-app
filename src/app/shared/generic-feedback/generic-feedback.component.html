@@ -6,4 +6,5 @@
   <ng-container *ngIf="config.showButton">
     <a [routerLink]="config.buttonRoute" class="feedback-button">{{ config.buttonText }}</a>
   </ng-container>
+  <img *ngIf="config.image" [src]="config.image" alt="">
 </section>

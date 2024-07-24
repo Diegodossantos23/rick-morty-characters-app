@@ -23,7 +23,8 @@ export class FavoritesComponent implements OnInit {
     message: 'Go back to the home page and choose the best ones for you',
     showButton: true,
     buttonRoute: '/home',
-    buttonText: 'Back to home'
+    buttonText: 'Back to home',
+    image: 'assets/img/not-have-favorite.jpeg'
   }
   constructor(private rickMortyService: RickMortyService) {}
 

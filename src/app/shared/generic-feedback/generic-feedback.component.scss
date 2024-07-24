@@ -1,22 +1,28 @@
 @import '../../../styles/styles';
 
 .feedback-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+
   padding: 2rem;
   background-color: $color-core-foreground;
-  color: white;
+  color: $text-white-color;
   @include border-radius(8px);
   margin-top: 2rem;
-  width: 100%  ;
   height: 511px;
   border-radius: 0.7rem;
 
   header {
-    margin-bottom: 1rem;
-
     h2 {
       font-size: 2rem;
       font-weight: 700;
+      
+    @media (max-width: $breakpoint-sm) {
+      font-size: 1rem;
+       }
     }
   }
 
@@ -24,12 +30,16 @@
     font-size: 2rem;
     margin-bottom: 2rem;
     color: $color-core-content-low;
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 1rem;
+    }
   }
 
   .feedback-button {
     display: inline-block;
-    background-color: $primary-color;
-    color: white;
+    background-color: $skyline-blue-color;
+    color: $text-white-color;
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
@@ -37,8 +47,19 @@
     text-decoration: none;
 
     &:hover {
-      background-color: $secondary-color;
-      color: $text-color;
+      background-color: $lime-green-color;
+      color: $dark-gray-color;
+    }
+  }
+
+  img {
+    max-width: 50%;
+    height: 50%;
+    display: block;
+    margin-top: 1rem;
+
+    @media (max-width: $breakpoint-sm) {
+      max-width: 60%;
     }
   }
 }

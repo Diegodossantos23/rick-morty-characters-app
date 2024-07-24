@@ -1,26 +1,21 @@
 @import '../../../styles/styles';
 
 .search-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem; 
-  width: 100%;
-  height: auto;
-  opacity: 1;
-  padding: 2rem 0;
+  @include flex-center-wrap ;
+  gap: 2rem;
 
   label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: bold;
   }
-
-  input,
+ 
   select {
     @include input-style;
   }
 
   input {
-    width: 88%;
+    @include input-style;
+    width: 240px;
   }
 }

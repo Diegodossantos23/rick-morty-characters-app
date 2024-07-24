@@ -8,7 +8,9 @@ export interface GenericFeedbackConfig {
   showButton?: boolean;
   buttonRoute?: string;
   buttonText?: string;
+  image?: string;
 }
+
 @Component({
   selector: 'app-generic-feedback',
   templateUrl: './generic-feedback.component.html',

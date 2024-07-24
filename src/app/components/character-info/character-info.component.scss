@@ -1,130 +1,116 @@
-@import '../../../styles/styles.scss';
+@import '../../../styles/mixins';
 
 .character-info-container {
   display: flex;
   flex-direction: row;
-  gap: $spacing-unit;
-  padding: $spacing-unit;
 
-  .character-info-card {
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.character-info-card {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-unit;
+  padding: 1.5rem;
+  @include border-radius(0.5rem);
+  background-color: $color-core-background;
+  flex: 1;
+
+  .details-header {
     display: flex;
     flex-direction: column;
-    gap: $spacing-unit;
-    padding: 1.5rem;
-    @include border-radius(0.5rem);
-    background-color: $color-core-background;
-    flex: 1;
-
-    .details-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: $spacing-unit;
-      @include border-radius(0.5rem);
-      @include box-shadow(rgba(0, 0, 0, 0.05) 0px 6px 24px);
-      background-color: $color-core-foreground;
-
-      h2 {
-        @include subtitle-style;
-        font-size: 1.5rem;
-        color: $text-white;
-        text-align: left;
-      }
-
-      img {
-        border-radius: 0.5rem;
-      }
-    }
-
-    .details-box {
-      display: flex;
-      justify-content: space-around;
-      gap: $spacing-unit;
-
-      .detail-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 120px;
-        padding: $spacing-unit;
-        @include border-radius(0.5rem);
-        @include box-shadow(rgba(0, 0, 0, 0.05) 0px 6px 24px);
-        background-color: $color-core-foreground;
-
-        h3 {
-          @include subtitle-style;
-        }
-
-        p {
-          @include paragraph-style;
-        }
-      }
-    }
-
-    .details-item, .details-rectangle {
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-
-      padding: 0.75rem 1rem;
-      @include border-radius(0.5rem);
-      @include box-shadow(rgba(0, 0, 0, 0.05) 0px 6px 24px);
-      background-color: $color-core-foreground;
-
-      h3 {
-        @include subtitle-style;
-      }
-
-      p {
-        @include paragraph-style;
-      }
-    }
-  }
-
-  .episodes-container {
-    margin-top: $spacing-unit;
-    padding: $spacing-unit;
-    @include border-radius(0.5rem);
-    display: grid;
-    
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: $spacing-unit;
-    max-height: 900px;
-    overflow-y: auto;
-
-    @include custom-scrollbar($color-core-background, $color-core-background, $primary-color, lighten($primary-color, 10%));
-
-    h3 {
-        @include subtitle-style;
-    }
-
-    .episode-item {
-      padding: $spacing-unit;
-      @include border-radius(0.5rem);
-      background-color: $color-core-foreground;
-      align-self: start; 
-      flex: 1; 
-
-      h4 {
-        @include subtitle-style;
-      }
-
-      p {
-        @include paragraph-style;
-      }
-    }
-  }
-
-  .vortex-container {
-    display: flex;
-    justify-content: center;
     align-items: center;
     text-align: center;
-    width: 100%;
-    height: 100vh;
+    padding: $spacing-unit;
+    @include border-radius(0.5rem);
+    @include box-shadow(rgba(0, 0, 0, 0.05) 0px 6px 24px);
+    background-color: $color-core-foreground;
 
-    border: 1px solid black;
+    h2 {
+      @include title-style;
+      font-size: 1.5rem;
+      color: $text-white-color;
+      text-align: left;
+
+      @media (max-width: $breakpoint-sm) {
+        text-align: center;
+      }
+    }
+
+    img {
+      border-radius: 0.5rem;
+    }
   }
+
+  .details-box {
+    display: flex;
+    justify-content: space-around;
+    gap: $spacing-unit;
+  }
+
+  .detail-item,
+  .details-rectangle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    text-align: left;
+    padding: $spacing-unit;
+    @include border-radius(0.5rem);
+    @include box-shadow(rgba(0, 0, 0, 0.05) 0px 6px 24px);
+    background-color: $color-core-foreground;
+
+    h3 {
+      @include title-style;
+    }
+
+    p {
+      @include paragraph-style;
+    }
+  }
+}
+
+.episodes-container {
+  margin-top: $spacing-unit;
+  padding: $spacing-unit;
+  @include border-radius(0.5rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: $spacing-unit;
+  max-height: 900px;
+  overflow-y: auto;
+  @include custom-scrollbar($color-core-background, $color-core-background, $skyline-blue-color, lighten($skyline-blue-color, 10%));
+
+  h3 {
+    @include title-style;
+  }
+
+  .episode-item {
+    padding: $spacing-unit;
+    @include border-radius(0.5rem);
+    background-color: $color-core-foreground;
+    align-self: start;
+    flex: 1;
+
+    h4 {
+      @include title-style;
+    }
+
+    p {
+      @include paragraph-style;
+    }
+  }
+}
+
+.vortex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  border: 1px solid $color-core-foreground;
 }

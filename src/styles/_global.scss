@@ -1,0 +1,51 @@
+@import 'variables';
+@import 'mixins';
+@import 'scrollbar';
+@import '_typography.scss';
+@import '_colors.scss';
+
+body {
+  background-color: $color-core-background;
+  font-family: $font-family-base;
+  color: $dark-gray-color;
+  margin: 0;
+  padding: 0;
+
+  @include custom-scrollbar($color-core-background, $color-core-background, $skyline-blue-color, lighten($skyline-blue-color, 10%));
+}
+
+h1 {
+  @include creepster-title-style;
+  @include font-creepster;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: $skyline-blue-color;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: $skyline-blue-color;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.container {
+  @include flex-center;
+  flex-direction: column;
+  padding: 1rem;
+  @include border-radius(4px);
+  margin: 1rem auto;
+  max-width: 1200px;
+}
+
+.section {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+

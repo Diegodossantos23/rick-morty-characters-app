@@ -5,9 +5,14 @@
 
   .favorites-header {
     @extend .section;
+
     .title {
-        @include title-style;
-        font-size: 3rem;
+      @include creepster-title-style;
+      font-size: 3rem;
+
+      @media (max-width: $breakpoint-sm) {
+        text-align: center;
+      }
     }
   }
 

@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit {
   feedbackConfig = {
     title: "Nothing was found",
     message: "Try performing a new search.",
-    showButton: false
+    showButton: false,
+    image: 'assets/img/not-found.jpeg'
   };
   
 

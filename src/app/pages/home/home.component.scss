@@ -1,14 +1,17 @@
 @import '../../../styles/styles';
 @import '../../../styles/scrollbar';
+@import '../../../styles/typography';
 
 .home-container {
   @extend .container;
-    
-  .page-header {
+
+    .page-header {
     @extend .section;
     .title {
-      @include title-style;
-      font-size: 3rem;
+      @include creepster-title-style;
+      @media (max-width: $breakpoint-sm) {
+        text-align: center;
+      }
     }
   }
 

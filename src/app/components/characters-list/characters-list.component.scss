@@ -1,5 +1,5 @@
 @import '../../../styles/styles';
 
 .characters-list {
-  @include responsive-grid(4);
+  @include flex-center-wrap ;
 }
