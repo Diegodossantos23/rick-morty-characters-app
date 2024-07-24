@@ -4,12 +4,17 @@
 @import '_typography.scss';
 @import '_colors.scss';
 
-body {
+html, body {
+  display: flex;
+  flex-direction: column;
+
   background-color: $color-core-background;
   font-family: $font-family-base;
   color: $dark-gray-color;
   margin: 0;
   padding: 0;
+  min-height: 100%;
+  flex: 1;
 
   @include custom-scrollbar($color-core-background, $color-core-background, $skyline-blue-color, lighten($skyline-blue-color, 10%));
 }
@@ -49,4 +54,20 @@ a {
   margin: 1rem 0;
 }
 
+#app-root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-container {
+  flex: 1;
+}
 
