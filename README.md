@@ -43,7 +43,6 @@ Os seguintes requisitos e diferenciais foram implementados:
 
 1. **Instalação das Dependências**: Execute `npm install` para instalar as dependências necessárias.
 2. **Servidor de Desenvolvimento**: Execute `npm start` para iniciar o servidor de desenvolvimento em `http://localhost:4200/`.
-3. **Build de Produção**: Execute `ng build` para gerar a build de produção.
 
 ## Demonstração ao Vivo
 
