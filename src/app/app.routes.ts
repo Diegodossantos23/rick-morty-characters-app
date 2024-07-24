@@ -6,7 +6,7 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { CharacterDetailsComponent } from './pages/character-details/character-details.component';
 
 export const routes: Routes = [
-  { path: '/', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'favorites', component: FavoritesComponent },
   { path: 'character/:id', component: CharacterDetailsComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
@@ -14,5 +14,5 @@ export const routes: Routes = [
 
 export const appConfig = [
   provideRouter(routes),
-  provideHttpClient() 
+  provideHttpClient()
 ];

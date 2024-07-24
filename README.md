@@ -1,27 +1,41 @@
 # RickMortyApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.1.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 18.1.1.
 
-## Development server
+## Descrição do Projeto
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Aplicação Angular que interage com a [Rick and Morty API](https://rickandmortyapi.com) para permitir aos usuários buscar, visualizar e gerenciar personagens da série "Rick and Morty". A aplicação inclui funcionalidades como busca de personagens, visualização de detalhes, e a habilidade de adicionar personagens aos favoritos.
 
-## Code scaffolding
+## Funcionalidades Implementadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Busca de Personagens**: Usuários podem buscar personagens pelo nome.
+- **Visualização de Detalhes**: Exibe informações detalhadas dos personagens, incluindo status, espécie, gênero e origem.
+- **Gestão de Favoritos**: Usuários podem adicionar e remover personagens de uma lista de favoritos.
+- **Design Responsivo**: A aplicação é totalmente responsiva, garantindo boa usabilidade em dispositivos móveis e desktops.
 
-## Build
+## Funcionalidades Adicionais
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Detalhes do persoangem**: Implementação para ver detalhes adicionais como episódios e localizações.
+- **Carregamento Lazy de Módulos**: Implementação de carregamento lazyloading para módulos de páginas, melhorando o desempenho.
+- **Uso de RxJS**: Para eficiência na busca e minimização das chamadas à API.
+- **Estilos Personalizados**: Layout responsivo para variados tamanhos de tela com scss
 
-## Running unit tests
+## Tecnologias Utilizadas
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Angular 18+**
+- **TypeScript**
+- **Angular Material**
+- **RxJS**
+- **Scss**
 
-## Running end-to-end tests
+## Instruções de Instalação e Execução
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Instalação das Dependências**: Execute `npm install` para instalar as dependências necessárias.
+2. **Servidor de Desenvolvimento**: Execute `npm start` para iniciar o servidor de desenvolvimento em `http://localhost:4200/`.
+3. **Build de Produção**: Execute `ng build` para gerar a build de produção.
 
-## Further help
+## Demonstração ao Vivo
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Acesse a versão ao vivo da aplicação em [RickMortyApp Live Demo](https://rick-morty-characters-app-woad.vercel.app/home).
+
+
