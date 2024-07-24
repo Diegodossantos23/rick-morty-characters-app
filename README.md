@@ -29,7 +29,7 @@ Os seguintes requisitos e diferenciais foram implementados:
 - Otimização do uso de diretivas estruturais. ✅
 - Carregamento lazy dos módulos das páginas. ✅
 - Layout responsivo. ✅
-- Além disso é possíovel ver os detalhes de um personagem.
+- Além disso é possível ver os detalhes de um personagem.
 
 ## Tecnologias Utilizadas
 
