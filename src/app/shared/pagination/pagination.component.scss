@@ -1,25 +1,43 @@
+@import '../../../styles/styles';
+
 .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  
-    button {
-      background-color: #B2DF28;
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      margin: 0 10px;
-  
-      &:disabled {
-        background-color: #d6d6d6;
-        cursor: not-allowed;
-      }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  box-sizing: border-box;
+
+  button {
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin: 0 10px;
+    @include border-radius(4px);
+    font-size: 1rem;
+    @include transition(background-color 0.3s, transform 0.2s);
+    flex-shrink: 0;
+
+    &:hover:not(:disabled) {
+      background-color: lighten($primary-color, 10%);
     }
-  
-    span {
-      font-size: 1.2rem;
+
+    &:disabled {
+      background-color: $text-color;
+      color: #a0a0a0;
+      cursor: not-allowed;
+    }
+
+    &:focus {
+      outline: 2px solid #007BFF;
+      outline-offset: 2px;
     }
   }
-  
+
+  .page-info {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: $text-white;
+  }
+}

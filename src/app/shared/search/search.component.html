@@ -1,19 +1,19 @@
-<div class="search-container">
+<!-- src/app/pages/home/home.component.html -->
+<section class="search-container">
   <input (input)="onSearch($event, 'name')" placeholder="Search by name" />
 
-  <select (change)="onSearch($event, 'status')" aria-label="Search by status">
+  <select (change)="onSearch($event, 'status')" class="select" aria-label="Search by status">
     <option value="">Select status</option>
     <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
   </select>
 
-  <select (change)="onSearch($event, 'species')" aria-label="Search by species">
+  <select (change)="onSearch($event, 'species')" class="select" aria-label="Search by species">
     <option value="">Select species</option>
     <option *ngFor="let species of speciesList" [value]="species">{{ species }}</option>
   </select>
 
-  <select (change)="onSearch($event, 'gender')" aria-label="Search by gender">
+  <select (change)="onSearch($event, 'gender')" class="select" aria-label="Search by gender">
     <option value="">Select gender</option>
     <option *ngFor="let gender of genders" [value]="gender">{{ gender }}</option>
   </select>
-  </div>
-  
+</section>

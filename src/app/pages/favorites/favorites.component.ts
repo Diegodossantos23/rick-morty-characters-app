@@ -18,7 +18,13 @@ export class FavoritesComponent implements OnInit {
   allFavoriteCharacters: Character[] = [];
   showFeedback: Boolean = false;
   isLoading: Boolean = true;
-
+  feedbackConfig={
+    title: 'It looks like you do not have any favorites yet',
+    message: 'Go back to the home page and choose the best ones for you',
+    showButton: true,
+    buttonRoute: '/home',
+    buttonText: 'Back to home'
+  }
   constructor(private rickMortyService: RickMortyService) {}
 
   ngOnInit(): void {

@@ -1,20 +1,25 @@
-<div class="home-container">
-    <div class="search-container">
-      <h2 class="font-creepster-regular">HOME</h2>
-    </div>
-    
+<main class="home-container">
+  <header class="page-header">
+    <h2 class="title">HOME</h2>
+  </header>
+
+  <section class="search-section">
     <app-search (searchEvent)="onSearch($event)"></app-search>
+  </section>
+
+  <section class="characters-section">
     <app-characters-list [characters]="characters"></app-characters-list>
-  
-    <app-generic-feedback
-      *ngIf="showFeedback"
-      [config]="feedbackConfig">
-    </app-generic-feedback>
-  
+  </section>
+
+  <section class="feedback-section" *ngIf="showFeedback">
+    <app-generic-feedback [config]="feedbackConfig"></app-generic-feedback>
+  </section>
+
+  <section class="pagination-section">
     <app-pagination 
       [currentPage]="currentPage" 
       [totalPages]="totalPages" 
       (pageChange)="onPageChange($event)">
     </app-pagination>
-  </div>
-  
+  </section>
+</main>

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { RickMortyService } from '../../core/services/rick-morty.service';
 import { Observable } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-tab-navigation',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './tab-navigation.component.html',
   styleUrls: ['./tab-navigation.component.scss']
 })

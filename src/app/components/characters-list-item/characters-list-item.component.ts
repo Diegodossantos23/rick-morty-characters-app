@@ -2,13 +2,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Character } from '../../core/models/character.model';
 import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-characters-list-item',
   templateUrl: './characters-list-item.component.html',
   styleUrls: ['./characters-list-item.component.scss'],
   standalone: true,
-  imports: [CommonModule, RouterModule] 
+  imports: [CommonModule, RouterModule, MatIconModule]
 })
 export class CharactersListItemComponent {
   @Input() character!: Character;

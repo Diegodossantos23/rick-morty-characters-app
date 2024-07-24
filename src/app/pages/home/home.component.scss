@@ -1,16 +1,33 @@
+@import '../../../styles/styles';
+@import '../../../styles/scrollbar';
+
 .home-container {
+  @extend .container;
+    
+  .page-header {
+    @extend .section;
+    .title {
+      @include title-style;
+      font-size: 3rem;
+    }
+  }
+
+  .search-section,
+  .characters-section,
+  .feedback-section {
+    @extend .section;
+    
+  }
+
+  .characters-section {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .card {
+      @extend .card;
+    }
+  }
 }
 
-.search-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin: 5rem;
-    width: 100%;
-}
+

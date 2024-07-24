@@ -22,14 +22,17 @@ export class HomeComponent implements OnInit {
   currentPage: number = 1;
   totalPages: number = 1;
   feedbackConfig = {
-    title: "Nada foi encontrado",
-    message: "Tente realizar uma nova busca.",
+    title: "Nothing was found",
+    message: "Try performing a new search.",
     showButton: false
   };
+  
 
   constructor(private rickMortyService: RickMortyService) {}
 
   ngOnInit(): void {
+    this.loadAllCharacters();
+
     this.rickMortyService.characters$.subscribe((characters: Character[]) => {
       this.characters = characters;
       this.showFeedback = characters.length === 0;
@@ -43,8 +46,6 @@ export class HomeComponent implements OnInit {
       this.errorMessage = error;
       this.showFeedback = !!error;
     });
-
-    this.loadAllCharacters();
   }
 
   loadAllCharacters(): void {

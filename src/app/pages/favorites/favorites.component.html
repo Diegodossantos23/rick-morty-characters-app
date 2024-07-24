@@ -1,20 +1,20 @@
-<div class="favorites-container">
-    <div class="search-container">
-      <h2 class="font-creepster-regular">FAVORITES</h2>
-    </div>
-    
+<section class="favorites-container">
+  <header class="favorites-header">
+    <h2 class="title">FAVORITES</h2>
+  </header>
+  
+  <section class="favorites-search">
     <app-search (searchEvent)="onSearch($event)"></app-search>
+  </section>
+  
+  <section class="favorites-list">
     <app-characters-list [characters]="favoriteCharacters"></app-characters-list>
+  </section>
   
+  <section class="favorites-feedback" *ngIf="showFeedback">
     <app-generic-feedback
-      *ngIf="showFeedback"
-      [config]="{
-        title: 'Parece que você ainda não tem favoritos',
-        message: 'Volte à página inicial e escolha os melhores para você',
-        showButton: true,
-        buttonRoute: '/home',
-        buttonText: 'Voltar ao início'
-      }">
-    </app-generic-feedback>
-  </div>
+    [config]="feedbackConfig">
+  </app-generic-feedback>
   
+  </section>
+</section>

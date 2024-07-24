@@ -1,9 +1,19 @@
-<div class="tabs">
-    <div class="tab" (click)="navigate('home')" [class.active]="isActive('home')">
-      <span class="icon">🏠</span> Home
-    </div>
-    <div class="tab" (click)="navigate('favorites')" [class.active]="isActive('favorites')">
-      <span class="icon">❤️</span> Favorites <span class="badge">{{ favoriteCount$ | async }}</span>
-    </div>
-  </div>
-  
+<nav class="tabs" aria-label="Tab navigation">
+  <button 
+    class="tab" 
+    (click)="navigate('home')" 
+    [class.active]="isActive('home')" 
+    [attr.aria-selected]="isActive('home')">
+    <span class="icon">🏠</span> Home
+  </button>
+  <button 
+    class="tab" 
+    (click)="navigate('favorites')" 
+    [class.active]="isActive('favorites')" 
+    [attr.aria-selected]="isActive('favorites')">
+    <span class="icon">💚</span> 
+    <span>Favorites</span>
+       
+    <span class="badge">{{ favoriteCount$ | async }}</span>
+  </button>
+</nav>

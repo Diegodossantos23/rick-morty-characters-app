@@ -1,35 +1,60 @@
+<div class="character-info-container">
+  <section>
+    <button [routerLink]="['/home']">Back to home</button>
+  </section>
 
-<div class="character-info-contaier">
+  <ng-container *ngIf="!isLoading; else loadingTemplate">
+    <article class="character-info-card">
+      <header class="details-header">
+        <h2>{{ character.name }}</h2>
+        <img [src]="character.image" [alt]="character.name">
+      </header>
 
-  <div class="character-info-card">
-
-    <div class="name-image">
-      <h3>{{ character.name }}</h3>
-      <img [src]="character.image" [alt]="character.name">
-    </div>
-
-      <div class="box">
-        <div class="status-alive-box">
-          <p><strong>Status:</strong></p>
+      <section class="details-box">
+        <div class="detail-item">
+          <h3>Status</h3>
           <p>{{ character.status }}</p>
         </div>
-        <div class="species-box">
-          <p><strong>Species:</strong></p>
+
+        <div class="detail-item">
+          <h3>Species</h3>
           <p>{{ character.species }}</p>
         </div>
-        <div class="gender-box">
-          <p><strong>Gender:</strong></p>
+
+        <div class="detail-item">
+          <h3>Gender</h3>
           <p>{{ character.gender }}</p>
         </div>
-      </div>
+      </section>
 
-      <p *ngIf="character.type"><strong>Type:</strong> {{ character.type  }}</p>
-      <div class="origin-rectangle">
-        <p><strong>Origin:</strong> {{ character.origin.name }}</p>
-      </div>
-      <div class="location-rectangle">
-        <p><strong>Location:</strong> {{ character.location.name }}</p>
-      </div>
-  </div>
+      <section class="details-rectangle" *ngIf="character.type">
+        <h3>Type</h3>
+        <p>{{ character.type }}</p>
+      </section>
+
+      <section class="details-rectangle">
+        <h3>Origin</h3>
+        <p>{{ character.origin.name }}</p>
+      </section>
+
+      <section class="details-rectangle">
+        <h3>Location</h3>
+        <p>{{ character.location.name }}</p>
+      </section>
+    </article>
+
+    <section class="episodes-container">
+      <h3>Episodes</h3>
+      <ng-container *ngFor="let ep of episodes">
+        <div class="episode-item">
+          <h4>{{ ep.episode }}</h4>
+          <p>{{ ep.name }}</p>
+          <p>{{ ep.air_date }}</p>        
+        </div>
+      </ng-container>
+    </section>
+  </ng-container>
+  <ng-template #loadingTemplate>
+      <app-vortex-loading [width]="500" [height]="500"></app-vortex-loading>
+  </ng-template>
 </div>
-  

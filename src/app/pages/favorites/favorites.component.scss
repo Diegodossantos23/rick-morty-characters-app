@@ -1,16 +1,29 @@
-.favorites-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 2rem;
-}
+@import '../../../styles/styles';
 
-.search-container {
+.favorites-container {
+  @extend .container;
+
+  .favorites-header {
+    @extend .section;
+    .title {
+        @include title-style;
+        font-size: 3rem;
+    }
+  }
+
+  .favorites-search,
+  .favorites-list,
+  .favorites-feedback {
+    @extend .section;
+  }
+
+  .favorites-list {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin: 5rem;
-    width: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .card {
+      @extend .card;
+    }
+  }
 }

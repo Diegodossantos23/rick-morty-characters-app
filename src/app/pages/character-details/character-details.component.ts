@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RickMortyService } from '../../core/services/rick-morty.service';
-import { Character } from '../../core/models/character.model';
+import { Character, Episode } from '../../core/models/character.model';
 
 import { VortexLoadingComponent } from '../../shared/vortex-loading/vortex-loading.component';
 import { GenericFeedbackComponent } from '../../shared/generic-feedback/generic-feedback.component';
 import { CharacterInfoComponent } from '../../components/character-info/character-info.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-character-details',
@@ -15,7 +16,6 @@ import { CharacterInfoComponent } from '../../components/character-info/characte
   standalone: true,
   imports: [
     CommonModule,
-
     VortexLoadingComponent,
     GenericFeedbackComponent,
     CharacterInfoComponent,
@@ -24,7 +24,8 @@ import { CharacterInfoComponent } from '../../components/character-info/characte
 })
 export class CharacterDetailsComponent implements OnInit {
   character: Character | null = null;
-  isLoading: boolean = true;
+  episodes: Episode[] = [];
+  isLoading$: Observable<boolean> | undefined;
   errorMessage: string | null = null;
 
   constructor(
@@ -33,6 +34,8 @@ export class CharacterDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading$ = this.rickMortyService.isLoading$;
+
     this.route.paramMap.subscribe(params => {
       const id = params.get('id');
       if (id) {
@@ -45,11 +48,24 @@ export class CharacterDetailsComponent implements OnInit {
     this.rickMortyService.getCharacterDetails(id).subscribe(
       character => {
         this.character = character;
-        this.isLoading = false;
+        if (character.episode.length > 0) {
+          this.loadEpisodesDetails(character.episode);
+        }
       },
       error => {
         this.errorMessage = error.message;
-        this.isLoading = false;
+      }
+    );
+  }
+
+  loadEpisodesDetails(episodeUrls: string[]): void {
+    this.rickMortyService.getEpisodesDetails(episodeUrls).subscribe(
+      episodes => {
+        this.episodes = episodes;
+        console.log("this.episodes", this.episodes);
+      },
+      error => {
+        this.errorMessage = error.message;
       }
     );
   }

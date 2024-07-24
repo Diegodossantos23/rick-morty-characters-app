@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Observable, BehaviorSubject, of } from 'rxjs';
+import { Observable, BehaviorSubject, of, forkJoin } from 'rxjs';
 import { map, tap, catchError, finalize } from 'rxjs/operators';
-import { Character } from '../models/character.model';
+import { Character, Episode } from '../models/character.model';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -27,6 +27,9 @@ export class RickMortyService {
 
   private characterDetailsSubject = new BehaviorSubject<Character | null>(null);
   characterDetails$ = this.characterDetailsSubject.asObservable();
+
+  private episodesSubject = new BehaviorSubject<Episode[]>([]);
+  episodes$ = this.episodesSubject.asObservable();
 
   constructor(private http: HttpClient) {
   }
@@ -111,16 +114,37 @@ export class RickMortyService {
     this.isLoading$.next(true);
     return this.http.get<Character>(`${this.apiUrl}/${id}`).pipe(
       tap(character => {
+        console.log("character", character);
+        
         this.characterDetailsSubject.next(character);
         this.isLoading$.next(false);
       }),
       catchError(error => {
         this.handleError(error);
         this.isLoading$.next(false);
-        return of({} as Character); 
+        return of({} as Character);
       })
     );
   }
+
+  getEpisodesDetails(episodeUrls: string[]): Observable<Episode[]> {
+    if (episodeUrls.length === 0) {
+      return of([]);
+    }
+    this.isLoading$.next(true);
+    return forkJoin(episodeUrls.map(url => this.http.get<Episode>(url))).pipe(
+      tap(episode => {
+        this.episodesSubject.next(episode);
+        this.isLoading$.next(false);
+      }),
+      catchError(error => {
+        this.handleError(error);
+        this.isLoading$.next(false);
+        return of([]);
+      })
+    );
+  }
+  
 }
   
 

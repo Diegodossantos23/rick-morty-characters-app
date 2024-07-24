@@ -1,0 +1,33 @@
+@import 'variables';
+
+@mixin font-creepster {
+  font-family: $font-creepster;
+  font-weight: 400;
+}
+
+@mixin font-poppins {
+  font-family: $font-family-base;
+  font-weight: 400;
+}
+
+// Títulos principais
+@mixin title-style {
+  @include font-creepster;
+  color: $primary-color;
+  display: inline-block;
+  text-shadow: $text-shadow;
+}
+
+// Subtítulos
+@mixin subtitle-style {
+  @include font-creepster;
+  font-size: 1.5rem;
+  color: $text-white;
+}
+
+// Parágrafos
+@mixin paragraph-style {
+  @include font-poppins;
+  font-size: 1rem;
+  color: $text-white;
+}

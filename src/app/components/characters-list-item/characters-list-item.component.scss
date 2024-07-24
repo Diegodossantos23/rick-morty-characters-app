@@ -1,41 +1,91 @@
-.character-item {
-    border-radius: 8px; 
-    border: 1px solid transparent; 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background-color: #fff; 
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
-    width: 230px;
-    position: relative;
-    height: 400px;
+@import '../../../styles/styles.scss';
 
+.character-item {
+  @include border-radius(8px);
+  border: 1px solid transparent; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: $color-core-foreground; 
+  @include box-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
+  width: 100%;
+  position: relative;
+  height: 400px;
+  @include transition(transform 0.2s, box-shadow 0.2s);
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-5px);
+    @include box-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
   }
-  
-  .character-item img {
+
+  img {
     width: 100%;
     height: auto;
-    border-radius: 8px 8px 0 0;
+    @include border-radius(8px 8px 0 0);
+  }
+}
+
+.character-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+  width: 100%;
+  height: 100%;
+
+  .main-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    padding-top: 1rem;
+    gap: 0.3rem;
+
+    h3 {
+      @include font-creepster;
+      color: $text-white;
+      font-size: 1.5rem;
+      margin: 0;
+      padding-left: 1rem;
+    }
+
+    p {
+      @include paragraph-style;
+      margin: 0;
+      padding-left: 1rem;
+      color: $text-white;
+    }
+  }
+}
+
+.favorite-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: green;
+  z-index: 1;
+  padding: 0.5rem; 
+
+  @include transition(transform 0.2s);
+  border-bottom-left-radius: 100px;
+
+  &:hover {
+    transform: scale(1.2);
   }
 
-  .character-info {
-    height: 74px;
-    width: auto;
-    padding: 1rem;
-    gap: 0.5rem;
+  &:focus {
+    outline: 2px solid $third-color;
+    outline-offset: 2px;
   }
-  
-  .favorite-icon {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    cursor: pointer;
-    font-size: 24px;
-    color: red;
-    z-index: 1;
-  }
-  
+}
 
-  
-  
+.favorite-icon-heart {
+  color: green;
+  font-size: 24px;
+}

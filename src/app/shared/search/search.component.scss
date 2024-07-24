@@ -1,12 +1,27 @@
-.search-container {
-    display: grid;
-    grid-template-columns: repeat(4, 0fr); 
-    gap: 5rem;
-    width: 100%; 
-    height: auto;
-    opacity: 1;
-}
+// src/app/pages/home/home.component.scss
+@import '../../../styles/styles';
 
-input, select {
-    width: 230px;
+.search-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem; 
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  padding: 2rem 0;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+
+  input,
+  select {
+    @include input-style;
+  }
+
+  input {
+    width: 88%;
+  }
 }

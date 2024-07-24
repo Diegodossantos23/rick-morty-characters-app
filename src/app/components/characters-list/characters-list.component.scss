@@ -1,9 +1,5 @@
+@import '../../../styles/styles';
+
 .characters-list {
-    display: grid;
-    grid-template-columns: repeat(4, 0fr); 
-    gap: 5rem;
-    width: 100%; 
-    height: auto;
-    opacity: 1;
-  }
-  
+  @include responsive-grid(4);
+}

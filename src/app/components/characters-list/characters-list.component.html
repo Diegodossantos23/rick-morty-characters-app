@@ -1,13 +1,12 @@
 <div class="characters-list">
-    <ng-container *ngIf="!isLoading; else loadingTemplate">
-      <app-characters-list-item 
-        *ngFor="let character of characters" 
-        [character]="character"
-        (toggleFavorite)="toggleFavorite(character)">
-      </app-characters-list-item>
-    </ng-container>
-    <ng-template #loadingTemplate>
-      <app-vortex-loading *ngFor="let _ of placeholders"></app-vortex-loading>
-    </ng-template>
-  </div>
-  
+  <ng-container *ngIf="!isLoading; else loadingTemplate">
+    <app-characters-list-item 
+      *ngFor="let character of characters" 
+      [character]="character"
+      (toggleFavorite)="toggleFavorite(character)">
+    </app-characters-list-item>
+  </ng-container>
+  <ng-template #loadingTemplate>
+    <app-vortex-loading *ngFor="let _ of placeholders" [width]="270" [height]="270"></app-vortex-loading>
+  </ng-template>
+</div>
