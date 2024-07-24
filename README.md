@@ -36,6 +36,6 @@ Aplicação Angular que interage com a [Rick and Morty API](https://rickandmorty
 
 ## Demonstração ao Vivo
 
-Acesse a versão ao vivo da aplicação em [RickMortyApp Live Demo](https://rick-morty-characters-app-woad.vercel.app/home).
+Acesse a versão ao vivo da aplicação em [RickMortyApp Live Demo](https://rick-morty-characters-njqxu5cyg-diegodossantos23s-projects.vercel.app).
 
 
