@@ -2,14 +2,14 @@ import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-float-button',
-  standalone: true,
-  imports: [],
   templateUrl: './float-button.component.html',
-  styleUrl: './float-button.component.scss'
+  styleUrls: ['./float-button.component.scss'],
+  standalone: true
 })
 export class FloatButtonComponent {
-  isScrolled: Boolean = false;
+  isScrolled: boolean = false;
 
+  @HostListener('window:scroll', [])
   onWindowScroll(): void {
     const verticalOffset = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
     this.isScrolled = verticalOffset > window.innerHeight / 2;

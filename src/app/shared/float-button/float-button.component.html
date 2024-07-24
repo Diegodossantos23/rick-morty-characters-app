@@ -1,3 +1,4 @@
-<button class="floating-button" [class.show]="isScrolled" (click)="scrollToTop()">
+<button class="floating-button" [class.show]="isScrolled" (click)="scrollToTop(); removeFocus($event)">
     <i class="fas fa-arrow-up"></i>
   </button>
+  

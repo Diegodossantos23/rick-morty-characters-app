@@ -13,24 +13,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 8px $color-core-foreground;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
     z-index: 1000;
     outline: none;
-    border: 2px solid transparent; 
-    font-size: 1.5rem;
-
+  
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+  
     &:focus,
     &:active {
-        outline: none;
-        border: 2px solid transparent; 
+      outline: none;
     }
-
-    &:focus-visible {
-        outline: none;
-        border: 2px solid transparent; 
+  
+    i {
+      font-size: 24px;
     }
-
   }
   
