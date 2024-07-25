@@ -14,7 +14,7 @@ Os seguintes requisitos e diferenciais foram implementados:
 ### Requisitos
 
 - Seguir o protótipo indicado. ✅
-- Buscar um personagem pelo nome. ✅
+- Buscar um personagem pelo nome, status, espécie e gênero. ✅
 - Exibir informações mínimas sobre os personagens caso existam. ✅
 - Registrar o personagem na lista de favoritos utilizando Subjects do RxJS. ✅
 - O contador no topo da página é atualizado dinamicamente em tempo real. ✅
@@ -23,7 +23,7 @@ Os seguintes requisitos e diferenciais foram implementados:
 
 ### Diferenciais
 
-- Busca por nome utilizando operadores do RxJS para maior eficiência. ✅
+- Busca por nome, status, espécie e gênero utilizando operadores do RxJS para maior eficiência. ✅
 - Utilização do pipe async no contador de favoritos no header. ✅
 - Fonte personalizada adicionada ao projeto. ✅
 - Otimização do uso de diretivas estruturais. ✅
