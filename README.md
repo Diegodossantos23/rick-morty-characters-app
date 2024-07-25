@@ -23,7 +23,7 @@ Os seguintes requisitos e diferenciais foram implementados:
 
 ### Diferenciais
 
-- Busca por nome, status, espécie e gênero utilizando operadores do RxJS para maior eficiência. ✅
+- Busca por nome, status, espécie e gênero utilizando operadores do RxJS. ✅
 - Utilização do pipe async no contador de favoritos no header. ✅
 - Fonte personalizada adicionada ao projeto. ✅
 - Otimização do uso de diretivas estruturais. ✅
