@@ -44,7 +44,7 @@ Os seguintes requisitos e diferenciais foram implementados:
 1. **Instalação das Dependências**: Execute `npm install` para instalar as dependências necessárias.
 2. **Servidor de Desenvolvimento**: Execute `npm start` para iniciar o servidor de desenvolvimento em `http://localhost:4200/`.
 
-## Demonstração ao Vivo
+## Link do deploy 
 
 Acesse a versão ao vivo da aplicação em [RickMortyApp Live Demo](https://rick-morty-characters-eta.vercel.app/home).
 
