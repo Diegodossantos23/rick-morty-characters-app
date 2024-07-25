@@ -7,14 +7,11 @@
     <app-search (searchEvent)="onSearch($event)"></app-search>
   </section>
   
-  <section class="favorites-list">
+  <section class="favorites-list" *ngIf="!showFeedback; else feedbackTemplate">
     <app-characters-list [characters]="favoriteCharacters"></app-characters-list>
   </section>
   
-  <section class="favorites-feedback" *ngIf="showFeedback">
-    <app-generic-feedback
-    [config]="feedbackConfig">
-  </app-generic-feedback>
-  
-  </section>
+  <ng-template #feedbackTemplate>
+    <app-generic-feedback [config]="feedbackConfig"></app-generic-feedback>
+  </ng-template>
 </section>

@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
 })
 export class RickMortyService {
   private apiUrl = `${environment.apiUrl}/character`;
-  
+
   private charactersSubject = new BehaviorSubject<Character[]>([]);
   characters$ = this.charactersSubject.asObservable();
 
@@ -21,7 +21,7 @@ export class RickMortyService {
   error$ = this.errorSubject.asObservable();
 
   isLoading$ = new BehaviorSubject<boolean>(false);
-  
+
   private totalPagesSubject = new BehaviorSubject<number>(1);
   totalPages$ = this.totalPagesSubject.asObservable();
 
@@ -31,8 +31,7 @@ export class RickMortyService {
   private episodesSubject = new BehaviorSubject<Episode[]>([]);
   episodes$ = this.episodesSubject.asObservable();
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   private syncFavorites(characters: Character[]): void {
     const favoriteIds = this.favoriteCharactersSubject.value.map(c => c.id);
@@ -54,7 +53,6 @@ export class RickMortyService {
     }
     params = params.append('page', page.toString());
 
-    this.isLoading$.next(true);
     return this.http.get<{ results: Character[], info: { pages: number } }>(this.apiUrl, { params }).pipe(
       map(response => {
         this.totalPagesSubject.next(response.info.pages);
@@ -65,8 +63,7 @@ export class RickMortyService {
         this.charactersSubject.next(characters);
         this.errorSubject.next(null);
       }),
-      catchError(error => this.handleError(error)),
-      finalize(() => this.isLoading$.next(false))
+      catchError(error => this.handleError(error))
     );
   }
 
@@ -78,7 +75,7 @@ export class RickMortyService {
         this.totalPagesSubject.next(response.info.pages);
         return response.results;
       }),
-      tap(characters => {        
+      tap(characters => {
         this.syncFavorites(characters);
         this.charactersSubject.next(characters);
         this.errorSubject.next(null);
@@ -114,8 +111,6 @@ export class RickMortyService {
     this.isLoading$.next(true);
     return this.http.get<Character>(`${this.apiUrl}/${id}`).pipe(
       tap(character => {
-        console.log("character", character);
-        
         this.characterDetailsSubject.next(character);
         this.isLoading$.next(false);
       }),
@@ -144,7 +139,4 @@ export class RickMortyService {
       })
     );
   }
-  
 }
-  
-

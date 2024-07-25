@@ -16,23 +16,23 @@ import { GenericFeedbackComponent } from '../../shared/generic-feedback/generic-
 export class FavoritesComponent implements OnInit {
   favoriteCharacters: Character[] = [];
   allFavoriteCharacters: Character[] = [];
-  showFeedback: Boolean = false;
-  isLoading: Boolean = true;
-  feedbackConfig={
+  showFeedback: boolean = false;
+  feedbackConfig = {
     title: 'It looks like you do not have any favorites yet',
     message: 'Go back to the home page and choose the best ones for you',
     showButton: true,
     buttonRoute: '/home',
     buttonText: 'Back to home',
     image: 'assets/img/not-have-favorite.jpeg'
-  }
+  };
+
   constructor(private rickMortyService: RickMortyService) {}
 
   ngOnInit(): void {
     this.loadAllFavoriteCharacters();
   }
 
-  loadAllFavoriteCharacters() {
+  loadAllFavoriteCharacters(): void {
     this.rickMortyService.favoriteCharacters$.subscribe((characters: Character[]) => {
       this.favoriteCharacters = characters;
       this.allFavoriteCharacters = characters;

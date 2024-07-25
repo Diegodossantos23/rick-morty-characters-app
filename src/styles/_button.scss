@@ -1,13 +1,15 @@
 button {
-    background-color: $skyline-blue-color;
     color: $text-white-color;
-    border: none;
+    font-size: 1rem;
+    @include font-poppins;
+    
     padding: 0.5rem 1rem;
     cursor: pointer;
+    border: none;
     @include border-radius(4px);
-    font-size: 1rem;
+    background-color: $skyline-blue-color;
     @include transition(background-color 0.3s, transform 0.2s);
-  
+
     &:hover:not(:disabled) {
       background-color: lighten($skyline-blue-color, 10%);
     }

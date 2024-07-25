@@ -7,15 +7,20 @@
     <app-search (searchEvent)="onSearch($event)"></app-search>
   </section>
 
-  <section class="characters-section">
-    <app-characters-list [characters]="characters"></app-characters-list>
+  <section class="characters-section" *ngIf="!showFeedback; else feedbackTemplate">
+    <ng-container *ngIf="!(isLoading$ | async); else loadingTemplate">
+      <app-characters-list [characters]="characters"></app-characters-list>
+    </ng-container>
+    <ng-template #loadingTemplate>
+      <app-vortex-loading *ngFor="let _ of placeholders" [width]="270" [height]="270"></app-vortex-loading>
+    </ng-template>
   </section>
 
-  <section class="feedback-section" *ngIf="showFeedback">
+  <ng-template #feedbackTemplate>
     <app-generic-feedback [config]="feedbackConfig"></app-generic-feedback>
-  </section>
+  </ng-template>
 
-  <section class="pagination-section">
+  <section class="pagination-section" *ngIf="!showFeedback">
     <app-pagination 
       [currentPage]="currentPage" 
       [totalPages]="totalPages" 

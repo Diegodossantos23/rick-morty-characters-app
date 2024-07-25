@@ -62,7 +62,6 @@ export class CharacterDetailsComponent implements OnInit {
     this.rickMortyService.getEpisodesDetails(episodeUrls).subscribe(
       episodes => {
         this.episodes = episodes;
-        console.log("this.episodes", this.episodes);
       },
       error => {
         this.errorMessage = error.message;

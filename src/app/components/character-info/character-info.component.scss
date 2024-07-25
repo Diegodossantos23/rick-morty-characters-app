@@ -3,7 +3,8 @@
 .character-info-container {
   display: flex;
   flex-direction: row;
-  
+  justify-content: center;
+  max-width: 1100px;
 
   @media (max-width: $breakpoint-sm) {
     flex-direction: column;
@@ -52,7 +53,7 @@
 
   .details-box {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: $spacing-unit;
     
   }

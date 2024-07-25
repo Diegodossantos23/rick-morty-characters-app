@@ -22,6 +22,10 @@ html, body {
 h1 {
   @include creepster-title-style;
   @include font-creepster;
+  
+  @media (max-width: $breakpoint-sm) {
+   text-align: center;;
+  }
 }
 
 h2 {
@@ -67,7 +71,5 @@ a {
   min-height: 100vh;
 }
 
-.main-container {
-  flex: 1;
-}
+
 

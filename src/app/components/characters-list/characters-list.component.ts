@@ -14,16 +14,11 @@ import { VortexLoadingComponent } from '../../shared/vortex-loading/vortex-loadi
 })
 export class CharactersListComponent implements OnInit {
   @Input() characters: Character[] = [];
-  @Input() isLoading = true;
   placeholders: any[] = new Array(20);
 
   constructor(private rickMortyService: RickMortyService) {}
 
-  ngOnInit(): void {
-    this.rickMortyService.isLoading$.subscribe(isLoading => {
-      this.isLoading = isLoading;
-    });    
-  }
+  ngOnInit(): void {}
 
   toggleFavorite(character: Character): void {
     if (character.isFavorite) this.rickMortyService.removeFavorite(character);

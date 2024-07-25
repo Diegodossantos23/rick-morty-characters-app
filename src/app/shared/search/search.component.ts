@@ -59,4 +59,5 @@ export class SearchComponent {
 
     this.searchEvent.emit(this.filters);
   }
+
 }

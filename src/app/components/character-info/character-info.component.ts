@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Character, Episode } from '../../core/models/character.model';
-import { VortexLoadingComponent } from '../../shared/vortex-loading/vortex-loading.component';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,16 +8,9 @@ import { RouterModule } from '@angular/router';
   templateUrl: './character-info.component.html',
   styleUrls: ['./character-info.component.scss'],
   standalone: true,
-  imports: [CommonModule, VortexLoadingComponent, RouterModule]
+  imports: [CommonModule, RouterModule]
 })
-export class CharacterInfoComponent implements OnInit {
+export class CharacterInfoComponent {
   @Input() character!: Character;
   @Input() episodes: Episode[] = [];
-  isLoading = true;
-
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000); 
-  }
 }

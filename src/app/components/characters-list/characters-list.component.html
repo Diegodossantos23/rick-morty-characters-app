@@ -1,5 +1,5 @@
 <div class="characters-list">
-  <ng-container *ngIf="!isLoading; else loadingTemplate">
+  <ng-container *ngIf="characters.length > 0; else loadingTemplate">
     <app-characters-list-item 
       *ngFor="let character of characters" 
       [character]="character"

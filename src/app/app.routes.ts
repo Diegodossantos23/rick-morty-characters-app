@@ -1,15 +1,25 @@
 import { Routes } from '@angular/router';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
-import { HomeComponent } from './pages/home/home.component';
-import { FavoritesComponent } from './pages/favorites/favorites.component';
-import { CharacterDetailsComponent } from './pages/character-details/character-details.component';
 
 export const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'favorites', component: FavoritesComponent },
-  { path: 'character/:id', component: CharacterDetailsComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  {
+    path: 'home',
+    loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent)
+  },
+  {
+    path: 'favorites',
+    loadComponent: () => import('./pages/favorites/favorites.component').then(m => m.FavoritesComponent)
+  },
+  {
+    path: 'character/:id',
+    loadComponent: () => import('./pages/character-details/character-details.component').then(m => m.CharacterDetailsComponent)
+  },
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  }
 ];
 
 export const appConfig = [

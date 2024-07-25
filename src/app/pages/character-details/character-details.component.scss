@@ -1,22 +1,17 @@
 @import '../../../styles/styles';
 @import '../../../styles/typography';
 
-.details-container {
+.character-details-container {
   @extend .container;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
 
   @media (max-width: $breakpoint-sm) {
-  flex-direction: column;
+    flex-direction: column;
   }
 
   .details-header {
-    width: 100%;
       h2 {
         @include creepster-title-style;
-        text-align: left;
+        text-align: left; 
       }
 
       @media (max-width: $breakpoint-sm) {
